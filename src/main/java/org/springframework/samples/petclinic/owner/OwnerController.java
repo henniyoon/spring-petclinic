@@ -96,7 +96,7 @@ class OwnerController {
 		}
 
 		// find owners by first name
-		Page<Owner> ownersResults = findPaginatedForOwnersFirsttName(page, owner.getFirstName());
+		Page<Owner> ownersResults = findPaginatedForOwnersFirstName(page, owner.getFirstName());
 		if (ownersResults.isEmpty()) {
 			// no owners found
 			result.rejectValue("firstName", "notFound", "not found");
@@ -122,7 +122,7 @@ class OwnerController {
 		return "owners/ownersList";
 	}
 
-	private Page<Owner> findPaginatedForOwnersFirsttName(int page, String firstName) {
+	private Page<Owner> findPaginatedForOwnersFirstName(int page, String firstName) {
 		int pageSize = 5;
 		Pageable pageable = PageRequest.of(page - 1, pageSize);
 		return owners.findByFirstName(firstName, pageable);
